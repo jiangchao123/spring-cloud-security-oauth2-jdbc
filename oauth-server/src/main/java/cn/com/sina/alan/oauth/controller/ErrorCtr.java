@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.Map;
 
 /**
+ * 自定义的认证错误页
  */
 @Controller
 @SessionAttributes("authorizationRequest")
@@ -23,6 +24,5 @@ public class ErrorCtr {
 
         return "redirect:" + uri + "?error=1";
     }
-
 
 }

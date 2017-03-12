@@ -17,11 +17,9 @@ import java.util.Arrays;
 @EnableAuthorizationServer
 public class AlanOAuthApplication {
 
-
     public static void main(String[] args) {
         SpringApplication.run(AlanOAuthApplication.class, args);
     }
-
 
     @Autowired
     private AuthenticationProvider authenticationProvider;
@@ -30,6 +28,5 @@ public class AlanOAuthApplication {
     public AuthenticationManager authenticationManager() {
         return new ProviderManager(Arrays.asList(authenticationProvider));
     }
-
 
 }

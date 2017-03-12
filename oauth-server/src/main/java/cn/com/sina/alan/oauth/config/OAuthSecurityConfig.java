@@ -18,8 +18,8 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import javax.sql.DataSource;
 import java.util.concurrent.TimeUnit;
 
-
 /**
+ * 配置client信息，以及源码中自带路径（如/oauth/check_token,默认是关闭的）的设置
  */
 @Configuration
 public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
@@ -34,7 +34,6 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
         return new JdbcTokenStore(dataSource);
     }
 
-
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);
@@ -46,15 +45,14 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
         tokenServices.setSupportRefreshToken(false);
         tokenServices.setClientDetailsService(endpoints.getClientDetailsService());
         tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
-        tokenServices.setAccessTokenValiditySeconds( (int) TimeUnit.DAYS.toSeconds(30)); // 30天
+        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30)); // 30天
         endpoints.tokenServices(tokenServices);
 
     }
 
-
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-//        oauthServer.checkTokenAccess("isAuthenticated()");
+        //        oauthServer.checkTokenAccess("isAuthenticated()");
         oauthServer.checkTokenAccess("permitAll()");
         oauthServer.allowFormAuthenticationForClients();
     }
@@ -71,11 +69,11 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
         String str = clientDetails.getClientSecret();
         System.out.println("===================client: " + str);
         clients.withClientDetails(clientDetails());
-//        clients.inMemory()
-//                .withClient("acme")
-//                .secret("acmesecret")
-//                .authorizedGrantTypes("authorization_code")
-//                .scopes("app");
+        //        clients.inMemory()
+        //                .withClient("acme")
+        //                .secret("acmesecret")
+        //                .authorizedGrantTypes("authorization_code")
+        //                .scopes("app");
     }
 
 }
