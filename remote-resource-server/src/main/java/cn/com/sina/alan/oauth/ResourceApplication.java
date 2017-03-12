@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * to use remote oauth server to authentication token
  */
 @SpringBootApplication
 @Configuration
 @EnableResourceServer
 @RestController
-public class ResourceApplication extends ResourceServerConfigurerAdapter{
+public class ResourceApplication extends ResourceServerConfigurerAdapter {
 
     // 方式一：调用远程Auth server进行token校验
     @Bean
@@ -61,12 +62,10 @@ public class ResourceApplication extends ResourceServerConfigurerAdapter{
         //you can implement it like this, but I show method invocation security on write
     }
 
-
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         System.out.println("==========================Configuring ResourceServerSecurityConfigurer ");
         resources.resourceId("oauth2-resource");
     }
-
 
 }

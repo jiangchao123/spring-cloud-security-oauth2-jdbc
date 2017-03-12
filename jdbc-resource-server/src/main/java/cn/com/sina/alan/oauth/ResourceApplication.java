@@ -23,12 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.sql.DataSource;
 
 /**
+ * to use share jdbc to store token and authenticate token
  */
 @SpringBootApplication
 @Configuration
 @EnableResourceServer
 @RestController
-public class ResourceApplication extends ResourceServerConfigurerAdapter{
+public class ResourceApplication extends ResourceServerConfigurerAdapter {
 
     // 方式一： 采用共享数据库进行token校验
     @Autowired
@@ -38,8 +39,6 @@ public class ResourceApplication extends ResourceServerConfigurerAdapter{
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
-
-
 
     public static void main(String[] args) {
         SpringApplication.run(ResourceApplication.class, args);
@@ -68,12 +67,10 @@ public class ResourceApplication extends ResourceServerConfigurerAdapter{
         //you can implement it like this, but I show method invocation security on write
     }
 
-
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         System.out.println("==========================Configuring ResourceServerSecurityConfigurer ");
         resources.resourceId("oauth2-resource").tokenStore(tokenStore());
     }
-
 
 }
