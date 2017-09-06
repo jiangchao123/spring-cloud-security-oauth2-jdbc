@@ -1,0 +1,10 @@
+server.port=8081
+#server.session.timeout=300
+#server.context-path=/admin
+security.oauth2.resource.id=oauth2-resource
+security.oauth2.resource.token-info-uri=http://localhost:8080/oauth/check_token
+#security.oauth2.authorization.check-token-access=http://localhost:8080/oauth/check_token
+security.oauth2.resource.prefer-token-info=true
+logging.level.org.springframework.security=DEBUG
+
+

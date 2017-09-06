@@ -1,0 +1,20 @@
+server.port=8081
+#server.session.timeout=300
+#server.context-path=/admin
+security.oauth2.resource.id=oauth2-resource
+security.oauth2.resource.token-info-uri=http://localhost:8080/oauth/check_token
+security.oauth2.resource.prefer-token-info=true
+logging.level.org.springframework.security=DEBUG
+
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/alan-oauth?characterEncoding=UTF-8
+spring.datasource.username=root
+spring.datasource.password=111111
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.max-idle=5
+spring.datasource.max-wait=10000
+spring.datasource.min-idle=2
+spring.datasource.initial-size=3
+spring.datasource.validation-query=SELECT 1
+spring.datasource.time-between-eviction-runs-millis=18800
+spring.datasource.jdbc-interceptors=ConnectionState;SlowQueryReport(threshold=50)
+
