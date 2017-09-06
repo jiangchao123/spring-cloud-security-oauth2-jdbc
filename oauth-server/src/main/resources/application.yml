@@ -1,0 +1,20 @@
+#security:
+#  oauth2:
+#    client:
+#      client-id: acme
+#      client-secret: acmesecret
+#      scope: read,write
+#      auto-approve-scopes: '.*'
+#  user:
+#    password: password
+logging:
+  level:
+    org.springframework.security: DEBUG
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/alan-oauth?characterEncoding=UTF-8
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  context-path: /uaa
